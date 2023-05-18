@@ -40,6 +40,7 @@ features = [
 [dependencies]
 scopeguard = "1.1"
 serde = { version = "1.0", features = ["derive"], optional = true }
+strum = { version = "0.21", features = ["derive"] }
 
 [dev-dependencies]
 clap = { version = "3.1.6", features = ["derive"] }

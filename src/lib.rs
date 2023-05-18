@@ -39,6 +39,7 @@ pub use posix::{BreakDuration, TTYPort};
 
 #[cfg(windows)]
 mod windows;
+use strum::EnumIter;
 #[cfg(windows)]
 pub use windows::COMPort;
 
@@ -127,7 +128,7 @@ impl From<Error> for io::Error {
 }
 
 /// Number of bits per character
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum DataBits {
     /// 5 bits per character
@@ -140,6 +141,7 @@ pub enum DataBits {
     Seven,
 
     /// 8 bits per character
+    #[default]
     Eight,
 }
 
@@ -163,13 +165,14 @@ impl fmt::Display for DataBits {
 ///
 /// Parity checking is disabled by setting `None`, in which case parity bits are not
 /// transmitted.
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum Parity {
     /// No parity bit.
     None,
 
     /// Parity bit sets odd number of 1 bits.
+    #[default]
     Odd,
 
     /// Parity bit sets even number of 1 bits.
@@ -189,10 +192,11 @@ impl fmt::Display for Parity {
 /// Number of stop bits
 ///
 /// Stop bits are transmitted after every character.
-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, EnumIter)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum StopBits {
     /// One stop bit.
+    #[default]
     One,
 
     /// Two stop bits.
