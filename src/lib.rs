@@ -31,7 +31,6 @@ use std::error::Error as StdError;
 use std::fmt;
 use std::io;
 use std::time::Duration;
-pub use strum::EnumIter;
 
 #[cfg(unix)]
 mod posix;
@@ -128,7 +127,7 @@ impl From<Error> for io::Error {
 }
 
 /// Number of bits per character
-#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, EnumIter)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum DataBits {
     /// 5 bits per character
@@ -165,7 +164,7 @@ impl fmt::Display for DataBits {
 ///
 /// Parity checking is disabled by setting `None`, in which case parity bits are not
 /// transmitted.
-#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, EnumIter)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum Parity {
     /// No parity bit.
@@ -192,7 +191,7 @@ impl fmt::Display for Parity {
 /// Number of stop bits
 ///
 /// Stop bits are transmitted after every character.
-#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, EnumIter)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum StopBits {
     /// One stop bit.
