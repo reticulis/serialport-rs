@@ -31,6 +31,7 @@ use std::error::Error as StdError;
 use std::fmt;
 use std::io;
 use std::time::Duration;
+pub use strum::EnumIter;
 
 #[cfg(unix)]
 mod posix;
@@ -39,7 +40,6 @@ pub use posix::{BreakDuration, TTYPort};
 
 #[cfg(windows)]
 mod windows;
-use strum::EnumIter;
 #[cfg(windows)]
 pub use windows::COMPort;
 
